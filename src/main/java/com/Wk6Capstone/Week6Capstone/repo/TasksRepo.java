@@ -9,7 +9,7 @@ import com.Wk6Capstone.Week6Capstone.entity.Users;
 
 public interface TasksRepo extends JpaRepository<Tasks, Integer>{
 	
-	List<Tasks> findAllByOrderByName();
+	List<Tasks> findAllByOrderByDescription();
 
 	List<Tasks> findAllByUser(Users user);
 

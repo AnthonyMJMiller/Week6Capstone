@@ -10,12 +10,12 @@ import javax.persistence.ManyToOne;
 public class Tasks {
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	private Integer idtasks;
 	@ManyToOne
 	private Users user;
 	private String description;
 	private String duedate;
-	private Boolean complete;
+	private Boolean completestatus;
 	
 	
 	
@@ -28,30 +28,30 @@ public class Tasks {
 
 	public Tasks(Integer id, Users user, String description, String duedate, Boolean complete) {
 		super();
-		this.id = id;
+		this.idtasks = id;
 		this.user = user;
 		this.description = description;
 		this.duedate = duedate;
-		this.complete = complete;
+		this.completestatus = complete;
 	}
 
 	public Tasks(Users user, String description, String duedate, Boolean complete) {
 		this.user = user;
 		this.description = description;
 		this.duedate = duedate;
-		this.complete = complete;
+		this.completestatus = complete;
 	}
 
 
 
 	public Integer getId() {
-		return id;
+		return idtasks;
 	}
 
 
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.idtasks = id;
 	}
 
 
@@ -91,21 +91,21 @@ public class Tasks {
 
 
 	public Boolean getComplete() {
-		return complete;
+		return completestatus;
 	}
 
 
 
 	public void setComplete(Boolean complete) {
-		this.complete = complete;
+		this.completestatus = complete;
 	}
 
 
 
 	@Override
 	public String toString() {
-		return "Tasks [id=" + id + ", user=" + user + ", description=" + description + ", duedate="
-				+ duedate + ", complete=" + complete + "]";
+		return "Tasks [id=" + idtasks + ", user=" + user + ", description=" + description + ", duedate="
+				+ duedate + ", complete=" + completestatus + "]";
 	}
 
 

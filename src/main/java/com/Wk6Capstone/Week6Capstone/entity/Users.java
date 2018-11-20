@@ -6,19 +6,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Users {
 	
 	@Id 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-
-	private Integer id;
+	private Integer userid;
+	
 	private String email;
 	private String password;
 	private String name;
-	@Transient
+	@OneToMany
 	Set<Tasks> task;
 	
 	
@@ -30,21 +30,28 @@ public class Users {
 
 	public Users(Integer id, String email, String password, String name, Set<Tasks> task) {
 		super();
-		this.id = id;
+		this.userid = id;
 		this.email = email;
 		this.password = password;
 		this.name = name;
 		this.task = task;
 	}
+	
+	public Users(Integer id, String email, String password, String name) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.name = name;
+	}
 
 
 	public Integer getId() {
-		return id;
+		return userid;
 	}
 
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.userid = id;
 	}
 
 
@@ -90,7 +97,7 @@ public class Users {
 
 	@Override
 	public String toString() {
-		return "Users [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", task=" + task
+		return "Users [id=" + userid + ", email=" + email + ", password=" + password + ", name=" + name + ", task=" + task
 				+ "]";
 	}
 

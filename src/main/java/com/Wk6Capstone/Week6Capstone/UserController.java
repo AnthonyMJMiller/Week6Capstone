@@ -3,6 +3,7 @@ package com.Wk6Capstone.Week6Capstone;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.Wk6Capstone.Week6Capstone.entity.Users;
 import com.Wk6Capstone.Week6Capstone.repo.UsersRepo;
 
+@Controller
 public class UserController {
 	
 	@Autowired
@@ -48,19 +50,19 @@ public class UserController {
 		return new ModelAndView("redirect:/showTasks");
 	}
 	
-	@RequestMapping("/newuser")
+	@RequestMapping("/userentry")
 	public ModelAndView newUserForm() {
-		return new ModelAndView("useraddform");
+		return new ModelAndView("userentry");
 		
 	}
 	
 	@PostMapping("/adduser")
-	public ModelAndView addUser(HttpSession session,RedirectAttributes redir,@RequestParam("email")String email, @RequestParam("password")String password) {
-		Users user = new Users(null,email,password,null, null);
+	public ModelAndView addUser(HttpSession session, RedirectAttributes redir, @RequestParam("id")Integer uId, @RequestParam("email")String email, @RequestParam("password")String password, @RequestParam("name")String name) {
+		Users user = new Users(uId,email,password,name);
 		userRepo.save(user);
 		session.setAttribute("user", user);
-		redir.addFlashAttribute("message", "Logged in.");
-		return new ModelAndView("redirect:/tasklist");
+		redir.addFlashAttribute("message", "Logged in. Thanks for registering!");
+		return new ModelAndView("/addtask");
 		
 	}
 

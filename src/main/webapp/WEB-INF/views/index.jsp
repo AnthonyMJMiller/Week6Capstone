@@ -5,30 +5,31 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Welcome Home</title>
 <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/lux/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
 
-<h1>Log in!</h1>
+	<br>
+	<h1>Log in!</h1>
 
 	<p class="message">${ message }</p>
 	<form action="/login" method="post">
 		<p>
 			<label for="email">Email:</label>
-			<input id="email" name="email" type="email">
+			<input id="email" name="email" type="email" required>
 		</p>
 		<p>
 			<label for="password">Password:</label>
-			<input id="password" name="password">
+			<input id="password" name="password" type="password" required>
 		</p>
 		<p>
 			<button type="submit">Login</button>
 		</p>
 		</form>
 		<p>
-			<a href="/newuser">New User</a>
+			<a href="/userentry">New User</a>
 		</p>
 	
 </div>

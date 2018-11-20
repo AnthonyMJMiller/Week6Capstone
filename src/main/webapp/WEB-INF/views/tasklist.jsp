@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Current Tasks</title>
 <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/lux/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -13,6 +13,7 @@
 <table class="table">
 			<thead>
 				<tr>
+					<th>Id</th>
 					<th>Description</th>
 					<th>Due Date</th>
 					<th>Completed</th>
@@ -23,10 +24,11 @@
 			<tbody>
 				<c:forEach var="item" items="${ items }">
 					<tr>
+						<td>${item.idtasks }</td>
 						<td>${ item.description }</td>
 						<td>${ item.dueDate }</td>
 						<td><input type="checkbox" value="true" ${ item.isComplete ? 'checked' : '' }></td>
-						<td> <a href="/delete">Delete</a></td>
+						<td> <a href="/delete?taskid${item.idtasks }">Delete</a></td>
 						<td> <a href="/edittask">Finish Task</a></td>
 					</tr>
 				</c:forEach>
