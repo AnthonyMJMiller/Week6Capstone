@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -12,6 +13,7 @@ public class Tasks {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idtasks;
 	@ManyToOne
+	@JoinColumn (name = "userid")
 	private Users user;
 	private String description;
 	private String duedate;
@@ -41,8 +43,20 @@ public class Tasks {
 		this.duedate = duedate;
 		this.completestatus = complete;
 	}
+	
+	public Tasks(String description, String duedate, Users user) {
+		super();
+		this.description = description;
+		this.duedate = duedate;
+		this.user = user;
+	}
 
-
+	public Tasks(String description, String duedate) {
+		super();
+		this.description = description;
+		this.duedate = duedate;
+	
+	}
 
 	public Integer getId() {
 		return idtasks;

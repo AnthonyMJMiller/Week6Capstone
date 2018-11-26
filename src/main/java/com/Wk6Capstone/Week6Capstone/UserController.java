@@ -62,7 +62,7 @@ public class UserController {
 		userRepo.save(user);
 		session.setAttribute("user", user);
 		redir.addFlashAttribute("message", "Logged in. Thanks for registering!");
-		return new ModelAndView("/addtask");
+		return new ModelAndView("addtask");
 		
 	}
 

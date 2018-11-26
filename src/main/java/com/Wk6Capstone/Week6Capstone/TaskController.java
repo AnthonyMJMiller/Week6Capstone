@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.Wk6Capstone.Week6Capstone.entity.Tasks;
 import com.Wk6Capstone.Week6Capstone.entity.Users;
 import com.Wk6Capstone.Week6Capstone.repo.TasksRepo;
 
@@ -35,9 +36,25 @@ public class TaskController {
 		}
 	
 	@RequestMapping("/delete")
-	public ModelAndView delete(@RequestParam("taskid")Integer tId) {
+	public ModelAndView deleteTask(@RequestParam("taskid")Integer tId) {
 		tasksRepo.deleteById(tId);
 		return new ModelAndView("redirect:/tasklist");
+	}
+	
+	@RequestMapping("/addtask")
+	public ModelAndView showForm(@RequestParam("userid") Integer pId){
+		
+		ModelAndView mv =  new ModelAndView("addtask", "userid", pId);
+	
+		return mv ;
+		
+	}
+	
+	@RequestMapping("/addtaskone")
+	public ModelAndView addingTask(Tasks addedTask) {
+		
+		tasksRepo.save(addedTask);
+		return new ModelAndView ("redirect:/tasklist");
 	}
 
 }

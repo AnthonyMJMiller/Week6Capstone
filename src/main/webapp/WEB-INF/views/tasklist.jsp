@@ -27,15 +27,15 @@
 						<td>${item.idtasks }</td>
 						<td>${ item.description }</td>
 						<td>${ item.dueDate }</td>
-						<td><input type="checkbox" value="true" ${ item.isComplete ? 'checked' : '' }></td>
+						<td><input type="checkbox" value="true" ${ item.completestatus ? 'checked' : '' }></td>
 						<td> <a href="/delete?taskid${item.idtasks }">Delete</a></td>
-						<td> <a href="/edittask">Finish Task</a></td>
+						<td> <a href="/edittask?taskid${item.idtasks }">Finish Task</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<p>
-		<a href="/add"> Add Task</a>
+		<a href="/addtask"> Add Task</a>
 		</p>
 		<p>
 		<a href="/logout"> Logout</a>

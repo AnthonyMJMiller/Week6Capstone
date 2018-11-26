@@ -1,6 +1,7 @@
 package com.Wk6Capstone.Week6Capstone.entity;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,18 +19,18 @@ public class Users {
 	private String email;
 	private String password;
 	private String name;
-	@OneToMany
-	Set<Tasks> task;
+	@OneToMany(mappedBy="user")
+	List<Tasks> task = new ArrayList<>();
 	
 	
 	public Users() {
-		super();
+		
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public Users(Integer id, String email, String password, String name, Set<Tasks> task) {
-		super();
+	public Users(Integer id, String email, String password, String name, List<Tasks> task) {
+		
 		this.userid = id;
 		this.email = email;
 		this.password = password;
@@ -38,10 +39,22 @@ public class Users {
 	}
 	
 	public Users(Integer id, String email, String password, String name) {
-		super();
+		
 		this.email = email;
 		this.password = password;
 		this.name = name;
+	}
+	
+	public Users(String name,String email, String password) {
+		
+		this.name=name;
+		this.email = email;
+		this.password = password;
+	}
+	public Users(String email, String password) {
+		
+		this.email = email;
+		this.password = password;
 	}
 
 
@@ -85,12 +98,12 @@ public class Users {
 	}
 
 
-	public Set<Tasks> getTask() {
+	public List<Tasks> getTask() {
 		return task;
 	}
 
 
-	public void setTask(Set<Tasks> task) {
+	public void setTask(List<Tasks> task) {
 		this.task = task;
 	}
 
